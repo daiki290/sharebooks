@@ -1,68 +1,58 @@
 <template>
-  <section class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        shareBooks
-      </h1>
-      <h2 class="subtitle">
-        My stellar Nuxt.js project
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >GitHub</a>
-      </div>
-    </div>
-  </section>
+  <div>
+    <v-app>
+    <v-form>
+    <v-container>
+      <p>書籍検索するためにISBNコード(ハイフンなし)を入力してください。</p>
+      <v-layout>
+        <v-flex xs12 md4>
+          <v-text-field
+            v-model="isbnCode"
+            :counter="13"
+            label="ISBNコード"
+            required
+          ></v-text-field>
+          <v-btn depressed small color="primary" @click="searchFromISBN()">検索</v-btn>
+        </v-flex>
+      </v-layout>
+      <v-layout>
+        <bookCard v-if="searchFlag" :book="book" />
+      </v-layout>
+    </v-container>
+    </v-form>
+    </v-app>
+  </div>
 </template>
-
 <script>
-import Logo from '~/components/Logo.vue'
+  import bookapi from '@/api/searchBooks';
+  import axios from 'axios';
+  import bookCard from '~/components/bookCard';
 
-export default {
-  components: {
-    Logo
+  export default {
+    data(){
+      return {
+        book : { title : '', author : '', isbn : '', imgurl : '',pubdate :'', price: ''},
+        isbnCode : '',
+        searchFlag : false
+      }
+    },
+    components : {
+      bookCard
+    },
+    methods: {
+      async searchFromISBN(){
+        let data= await axios.get('https://api.openbd.jp/v1/get?isbn='+this.isbnCode).then(json => {
+            return json.data[0];
+          })
+        .catch(e => ({ error: e }));
+        this.book.title = data.summary.title;
+        this.book.author = data.summary.author;
+        this.book.isbn = data.summary.isbn;
+        this.book.pubdate = data.summary.pubdate;
+        this.book.imgurl = data.summary.cover;
+        this.book.price = data.summary.PriceAmount;
+        this.searchFlag = true;
+      }
+    }
   }
-}
 </script>
-
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-</style>
