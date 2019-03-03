@@ -40,6 +40,8 @@ module.exports = {
   ** Nuxt.js modules
   */
   modules: [
+    '@nuxtjs/vuetify',
+    '@nuxtjs/axios'
   ],
 
   /*
@@ -50,7 +52,7 @@ module.exports = {
     ** You can extend webpack config here
     */
     extend(config, ctx) {
-      
+
     }
   }
 }

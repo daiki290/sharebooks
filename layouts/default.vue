@@ -1,8 +1,21 @@
 <template>
   <div>
+    <headMenu />
     <nuxt />
+    <foot />
   </div>
 </template>
+<script>
+ import headMenu from '~/components/header/headMenu.vue'
+ import foot from '~/components/footer/footMenu.vue'
+
+ export default{
+   components:{
+     headMenu ,
+     foot
+   }
+ }
+</script>
 
 <style>
 html {
