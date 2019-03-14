@@ -1,21 +1,37 @@
 <template>
   <div class="header">
-    <h1>書籍検索</h1>
+    <h1 class="appName">Search Books</h1>
+    <ul id="headNav">
+      <li><nuxt-link to="/"><span>Home</span></nuxt-link></li>
+      <li><nuxt-link to="/login"><span>Search Books</span></nuxt-link></li>
+      <li><nuxt-link to="/about"><span>About Me</span></nuxt-link></li>
+      <li><nuxt-link to="/Content/15">Test</nuxt-link></li>
+    </ul>
   </div>
 </template>
 
 <style>
 .header{
   height: 100px;
+  width: 80%;
+  margin: 0 auto;
   text-align: center;
 }
-.menu {
+#headNav{
   list-style: none;
-  padding: 0;
-  background-color: #EEE;
+  overflow: hidden;
+  width:100%;
+  float: left;
+  text-align: center;
+
 }
-.menu li {
-  display: inline-block;
-  padding: 5px;
+
+#headNav li {
+  width: 15%;
+  position: relative;
+  float:left;
+  margin-left : 1%;
+  margin-right : 1%;
 }
+
 </style>

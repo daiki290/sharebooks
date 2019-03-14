@@ -1,8 +1,12 @@
 <template>
-  <div>
-    <headMenu />
-    <nuxt />
-    <foot />
+  <div id="container">
+    <div class="wrapper">
+      <headMenu />
+      <nuxt />
+    </div>
+    <div class="foot">
+      <foot />
+    </div>
   </div>
 </template>
 <script>
@@ -19,8 +23,8 @@
 
 <style>
 html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'arial narrow', sans-serif, 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
@@ -65,4 +69,9 @@ html {
   color: #fff;
   background-color: #35495e;
 }
+
+.wrapper{
+  min-height: 100vh;
+}
+
 </style>

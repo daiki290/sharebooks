@@ -14,7 +14,9 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.4.0",
     "cross-env": "^5.2.0",
-    "nuxt": "^2.3.4"
+    "firebase": "^5.8.6",
+    "nuxt": "^2.3.4",
+    "vuexfire": "^3.0.0-alpha.14"
   },
   "devDependencies": {
     "@nuxtjs/vuetify": "^0.5.5",
