@@ -28,6 +28,7 @@ module.exports = {
   ** Global CSS
   */
   css: [
+    '~/assets/css/buefy.scss'
   ],
 
   /*
@@ -40,6 +41,10 @@ module.exports = {
   ** Nuxt.js modules
   */
   modules: [
+    ['nuxt-buefy', {
+     css: false,
+     // materialDesignIcons: false
+   }],
   ],
 
   /*
@@ -50,7 +55,7 @@ module.exports = {
     ** You can extend webpack config here
     */
     extend(config, ctx) {
-      
+
     }
   }
 }

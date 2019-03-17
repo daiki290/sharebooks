@@ -1,8 +1,18 @@
 <template>
   <div>
+    <headComp />
     <nuxt />
   </div>
 </template>
+<script>
+  import headComp from '~/components/headComp.vue'
+
+  export default{
+    components:{
+      headComp
+    }
+  }
+</script>
 
 <style>
 html {
